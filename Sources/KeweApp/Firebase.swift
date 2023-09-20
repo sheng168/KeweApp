@@ -10,6 +10,7 @@ import SwiftUI
 
 import FirebaseAnalytics
 import FirebaseCore
+import FirebaseInstallations
 import FirebaseRemoteConfig
 
 
@@ -24,6 +25,15 @@ public enum FirebaseInit {
         settings.minimumFetchInterval = 0
         FirebaseInit.remoteConfig.configSettings = settings
         
+        Installations.installations().installationID { (id, error) in
+            if let error = error {
+                print("Error fetching id: \(error)")
+                return
+            }
+            guard let id = id else { return }
+            print("Installation ID: \(id)")
+        }
+        
         FirebaseInit.remoteConfig.addOnConfigUpdateListener { configUpdate, error in
             guard let configUpdate, error == nil else {
                 return print("Error listening for config updates: \(error)")
@@ -33,6 +43,8 @@ public enum FirebaseInit {
             
             FirebaseInit.remoteConfig.activate { changed, error in
                 guard error == nil else { return print(error) }
+                let label: String? = remoteConfig.configValue(forKey: "buy").stringValue
+                print(label)
 //                DispatchQueue.main.async {
 //                    self.displayWelcome()
 //                }
