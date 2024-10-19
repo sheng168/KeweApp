@@ -13,6 +13,7 @@ import FirebaseCore
 import FirebaseInstallations
 import FirebaseRemoteConfig
 
+import Then
 
 public enum FirebaseInit {
     static var remoteConfig = RemoteConfig.remoteConfig()
@@ -21,8 +22,10 @@ public enum FirebaseInit {
         FirebaseApp.configure()
         
         // remote config
-        let settings = RemoteConfigSettings()
-        settings.minimumFetchInterval = 0
+        let settings = RemoteConfigSettings().then {
+            $0.minimumFetchInterval = 0
+        }
+        
         FirebaseInit.remoteConfig.configSettings = settings
         
         Installations.installations().installationID { (id, error) in

@@ -17,7 +17,7 @@ let package = Package(
             targets: ["KeweApp"]),
     ],
     dependencies: [
-//        .package(url: "https://github.com/devxoul/Then", from: "3.0.0"),
+        .package(url: "https://github.com/devxoul/Then", from: "3.0.0"),
         .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", .upToNextMajor(from: "10.15.0")),
     ],
     targets: [
@@ -28,6 +28,7 @@ let package = Package(
             dependencies: [
                 .product(name: "FirebaseAnalyticsSwift", package: "Firebase"),
                 .product(name: "FirebaseRemoteConfigSwift", package: "Firebase"),
+                .product(name: "Then", package: "Then"),
 //                "FirebaseAnalyticsSwift",
 //                "FirebaseRemoteConfigSwift"
             ]),

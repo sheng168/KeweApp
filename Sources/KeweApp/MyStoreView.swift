@@ -31,7 +31,7 @@ public struct MyStoreView: View {
 
 #Preview {
     if #available(iOS 17.0, *) {
-        MyStoreView(groupID: "21388021")
+        MyStoreView(groupID: "21385947")
     } else {
         EmptyView()
     }
