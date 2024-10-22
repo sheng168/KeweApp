@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-func send(tweet: String) {
+public func send(tweet: String) {
     // Perform form submission logic here
     
     
