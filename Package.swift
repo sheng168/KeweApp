@@ -7,7 +7,7 @@ let package = Package(
     name: "KeweApp",
     platforms: [
             .macOS(.v10_13),
-            .iOS(.v13),
+            .iOS(.v14),
             .watchOS(.v4),
         ],
     products: [
