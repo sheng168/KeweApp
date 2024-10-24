@@ -24,7 +24,7 @@ public struct RemoteConfigConditional<Content: View>: View {
     }
 }
 
-public struct RemoteText<Content: View>: View {
+public struct RemoteText: View {
     @RemoteConfigProperty var string: String
 
     public init(_ string: String, key: String? = nil) {
