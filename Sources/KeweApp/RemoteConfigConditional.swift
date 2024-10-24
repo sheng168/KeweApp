@@ -23,3 +23,19 @@ public struct RemoteConfigConditional<Content: View>: View {
         }
     }
 }
+
+public struct RemoteText<Content: View>: View {
+    @RemoteConfigProperty var string: String
+
+    public init(_ string: String, key: String? = nil) {
+        if let key {
+            _string = .init(key: key, fallback: string)
+        } else {
+            _string = .init(key: string, fallback: string)
+        }
+    }
+
+    public var body: some View {
+        Text(string)
+    }
+}
